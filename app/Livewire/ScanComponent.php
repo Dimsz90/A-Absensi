@@ -125,6 +125,7 @@ class ScanComponent extends Component
         if ($attendance) {
             $this->setAttendance($attendance);
         } else {
+        
             // get closest shift from current time
             $closest = ExtendedCarbon::now()
                 ->closestFromDateArray($this->shifts->pluck('start_time')->toArray());

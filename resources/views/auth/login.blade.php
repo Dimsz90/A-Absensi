@@ -35,10 +35,8 @@
       </div>
 
       <div class="mb-3 mt-4 flex items-center justify-end">
-        <a href="{{ route('register') }}">
-          <x-secondary-button class="ms-4" type="button">
-            {{ __('Register') }}
-          </x-secondary-button>
+      
+
         </a>
 
         <x-button class="ms-4">

@@ -11,7 +11,6 @@
       <th>Birth Place</th>
       <th>Address</th>
       <th>City</th>
-      <th>Education</th>
       <th>Division</th>
       <th>Job Title</th>
       <th>Created At</th>
@@ -33,7 +32,6 @@
         <td>{{ $user->birth_place }}</td>
         <td>{{ $user->address }}</td>
         <td>{{ $user->city }}</td>
-        <td>{{ $user->education?->name }}</td>
         <td>{{ $user->division?->name }}</td>
         <td>{{ $user->jobTitle?->name }}</td>
         <td>{{ $user->created_at }}</td>

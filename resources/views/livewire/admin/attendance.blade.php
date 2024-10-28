@@ -110,7 +110,11 @@
             </th>
             <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
               {{ __('Time Out') }}
+              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
+        {{ __('Total Jam') }} 
+    </th>
             </th>
+
           @endif
           @if (!$isPerDayFilter)
             @foreach (['H', 'T', 'I', 'S', 'A'] as $_st)
@@ -151,11 +155,37 @@
                 {{ $employee->jobTitle?->name ?? '-' }}
               </td>
               @if ($isPerDayFilter)
-                @php
-                  $attendance = $employee->attendances->isEmpty() ? null : $employee->attendances->first();
-                  $timeIn = $attendance ? $attendance['time_in'] : null;
-                  $timeOut = $attendance ? $attendance['time_out'] : null;
-                @endphp
+              @php
+    $attendances = $employee->attendances;
+    $attendance = $employee->attendances->isEmpty() ? null : $employee->attendances->first();
+    $timeIn = $attendance ? $attendance['time_in'] : null;
+    $timeOut = $attendance ? $attendance['time_out'] : null;
+
+    // Default jika tidak ada time_in atau time_out
+    $totalHours = '-';
+
+    // Hitung total jam kerja jika time_in dan time_out tersedia
+if ($timeIn && $timeOut) {
+    // Ubah waktu masuk dan keluar menjadi objek Carbon
+    $startTime = Carbon::parse($timeIn);
+    $endTime = Carbon::parse($timeOut);
+    
+    // Cek jika waktu keluar terjadi di hari berikutnya
+    if ($endTime->lessThan($startTime)) {
+        // Tambahkan satu hari ke waktu keluar
+        $endTime->addDay();
+    }
+    
+    // Hitung selisih jam dan menit
+    $hours = $endTime->diffInHours($startTime);
+    $minutes = $endTime->diffInMinutes($startTime) % 60; // Ambil sisa menit
+
+    // Format hasil ke dalam "X jam Y menit"
+    $totalHours = sprintf('%d jam %02d menit', $hours, $minutes);
+}
+
+
+  @endphp
                 <td class="{{ $class }} text-nowrap group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
                   {{ $attendance['shift'] ?? '-' }}
                 </td>
@@ -239,6 +269,9 @@
               <td class="{{ $class }} group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
                 {{ $timeOut ?? '-' }}
               </td>
+              <td class="{{ $class }} group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
+          {{ $totalHours }}
+        </td>
             @endif
 
             {{-- Total --}}

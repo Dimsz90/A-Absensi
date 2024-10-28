@@ -31,8 +31,7 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFai
             ?? Division::create(['name' => $row['division']])?->id;
         $job_title_id = JobTitle::where('name', $row['job_title'])->first()?->id
             ?? JobTitle::create(['name' => $row['job_title']])?->id;
-        $education_id = Education::where('name', $row['education'])->first()?->id
-            ?? Education::create(['name' => $row['education']])?->id;
+      
         $user = (new User)->forceFill([
             'id' => isset($row['id']) ? $row['id'] : null,
             'nip' => $row['nip'],

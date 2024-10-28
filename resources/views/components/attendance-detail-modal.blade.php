@@ -1,4 +1,4 @@
-<x-modal wire:model="showDetail" onclose="removeMap()">
+s<x-modal wire:model="showDetail" onclose="removeMap()">
   <div class="px-6 py-4">
     @if ($currentAttendance)
       @php

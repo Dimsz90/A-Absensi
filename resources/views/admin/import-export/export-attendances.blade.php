@@ -4,7 +4,7 @@
       <th>#</th>
       <th>Date</th>
       <th>Name</th>
-      <th>NIP</th>
+      <th>NIPs </th>
       <th>Time In</th>
       <th>Time Out</th>
       <th>Shift</th>

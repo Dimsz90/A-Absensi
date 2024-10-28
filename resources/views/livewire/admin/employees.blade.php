@@ -25,14 +25,7 @@
         </option>
       @endforeach
     </x-select>
-    <x-select id="education" wire:model.live="education">
-      <option value="">{{ __('Last Education') }}</option>
-      @foreach (App\Models\Education::all() as $_education)
-        <option value="{{ $_education->id }}" {{ $_education->id == $education ? 'selected' : '' }}>
-          {{ $_education->name }}
-        </option>
-      @endforeach
-    </x-select>
+
     <div class="col-span-3 flex items-center gap-2 lg:col-span-1">
       <x-input type="text" class="w-full lg:w-72" name="search" id="seacrh" wire:model="search"
         placeholder="{{ __('Search') }}" />
@@ -40,7 +33,7 @@
         <x-button class="flex justify-center sm:w-32" type="button" wire:click="$refresh" wire:loading.attr="disabled">
           {{ __('Search') }}
         </x-button>
-        @if ($search)
+    @if ($search)
           <x-secondary-button class="flex justify-center sm:w-32" type="button" wire:click="$set('search', '')"
             wire:loading.attr="disabled">
             {{ __('Reset') }}
