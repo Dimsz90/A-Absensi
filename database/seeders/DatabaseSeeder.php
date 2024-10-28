@@ -9,7 +9,6 @@ use App\Models\JobTitle;
 use App\Models\Shift;
 use App\Models\User;
 use Database\Factories\DivisionFactory;
-use Database\Factories\EducationFactory;
 use Database\Factories\JobTitleFactory;
 use Illuminate\Database\Seeder;
 
@@ -27,12 +26,7 @@ class DatabaseSeeder extends Seeder
             }
             Division::create(['name' => $value]);
         }
-        foreach (EducationFactory::$educations as $value) {
-            if (Education::where('name', $value)->exists()) {
-                continue;
-            }
-            Education::create(['name' => $value]);
-        }
+        
         foreach (JobTitleFactory::$jobTitles as $value) {
             if (JobTitle::where('name', $value)->exists()) {
                 continue;

@@ -54,9 +54,7 @@
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
             {{ __('Name') }}
           </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
-            {{ __('NIP') }}
-          </th>
+       
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
             {{ __('Email') }}
           </th>
@@ -89,10 +87,7 @@
               {{ $wireClick }}>
               {{ $user->name }}
             </td>
-            <td class="{{ $class }} px-6 py-4 text-sm font-medium text-gray-900 dark:text-white"
-              {{ $wireClick }}>
-              {{ $user->nip }}
-            </td>
+           
             <td class="{{ $class }} px-6 py-4 text-sm font-medium text-gray-900 dark:text-white"
               {{ $wireClick }}>
               {{ $user->email }}
@@ -207,14 +202,7 @@
               <x-input-error for="form.email" class="mt-2" message="{{ $message }}" />
             @enderror
           </div>
-          <div class="w-full">
-            <x-label for="nip">NIP</x-label>
-            <x-input id="nip" class="mt-1 block w-full" type="text" wire:model="form.nip"
-              placeholder="12345678" required />
-            @error('form.nip')
-              <x-input-error for="form.nip" class="mt-2" message="{{ $message }}" />
-            @enderror
-          </div>
+        
         </div>
         <div class="mt-4 flex flex-col gap-4 sm:flex-row sm:gap-3">
           <div class="w-full">
@@ -316,20 +304,7 @@
             <x-input-error for="form.job_title_id" class="mt-2" message="{{ $message }}" />
           @enderror
         </div>
-        <div class="mt-4">
-          <x-label for="form.education_id" value="{{ __('Last Education') }}" />
-          <x-select id="form.education_id" class="mt-1 block w-full" wire:model="form.education_id">
-            <option value="">{{ __('Select Education') }}</option>
-            @foreach (App\Models\Education::all() as $education)
-              <option value="{{ $education->id }}" {{ $education->id == $form->education_id ? 'selected' : '' }}>
-                {{ $education->name }}
-              </option>
-            @endforeach
-          </x-select>
-          @error('form.education_id')
-            <x-input-error for="form.education_id" class="mt-2" message="{{ $message }}" />
-          @enderror
-        </div>
+     
       </x-slot>
 
       <x-slot name="footer">
@@ -410,14 +385,7 @@
               <x-input-error for="form.email" class="mt-2" message="{{ $message }}" />
             @enderror
           </div>
-          <div class="w-full">
-            <x-label for="nip">NIP</x-label>
-            <x-input id="nip" class="mt-1 block w-full" type="text" wire:model="form.nip"
-              placeholder="12345678" required />
-            @error('form.nip')
-              <x-input-error for="form.nip" class="mt-2" message="{{ $message }}" />
-            @enderror
-          </div>
+         
         </div>
         <div class="mt-4 flex flex-col gap-4 sm:flex-row sm:gap-3">
           <div class="w-full">
@@ -518,20 +486,7 @@
             <x-input-error for="form.job_title_id" class="mt-2" message="{{ $message }}" />
           @enderror
         </div>
-        <div class="mt-4">
-          <x-label for="form.education_id" value="{{ __('Last Education') }}" />
-          <x-select id="form.education_id" class="mt-1 block w-full" wire:model="form.education_id">
-            <option value="">{{ __('Select Education') }}</option>
-            @foreach (App\Models\Education::all() as $education)
-              <option value="{{ $education->id }}" {{ $education->id == $form->education_id ? 'selected' : '' }}>
-                {{ $education->name }}
-              </option>
-            @endforeach
-          </x-select>
-          @error('form.education_id')
-            <x-input-error for="form.education_id" class="mt-2" message="{{ $message }}" />
-          @enderror
-        </div>
+       
       </x-slot>
 
       <x-slot name="footer">
@@ -551,7 +506,7 @@
       @php
         $division = $form->user->division ? json_decode($form->user->division)->name : '-';
         $jobTitle = $form->user->jobTitle ? json_decode($form->user->jobTitle)->name : '-';
-        $education = $form->user->education ? json_decode($form->user->education)->name : '-';
+      
       @endphp
       <div class="px-6 py-4">
         <div class="my-4 flex items-center justify-center">
@@ -564,10 +519,7 @@
         </div>
 
         <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
-          <div class="mt-4">
-            <x-label for="nip" value="NIP" />
-            <p>{{ $form->user->nip }}</p>
-          </div>
+         
           <div class="mt-4">
             <x-label for="email" value="{{ __('Email') }}" />
             <p>{{ $form->user->email }}</p>
@@ -616,10 +568,7 @@
             <x-label for="division_id" value="{{ __('Division') }}" />
             <p>{{ $division }}</p>
           </div>
-          <div class="mt-4">
-            <x-label for="education_id" value="{{ __('Last Education') }}" />
-            <p>{{ $education }}</p>
-          </div>
+        
         </div>
       </div>
     @endif

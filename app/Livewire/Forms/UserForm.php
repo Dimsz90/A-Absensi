@@ -24,7 +24,6 @@ class UserForm extends Form
     public $birth_date = null;
     public $birth_place = '';
     public $division_id = null;
-    public $education_id = null;
     public $job_title_id = null;
     public $photo = null;
 
@@ -54,7 +53,6 @@ class UserForm extends Form
             'birth_date' => ['nullable', 'date'],
             'birth_place' => ['nullable', 'string', 'max:255'],
             'division_id' => ['nullable', 'exists:divisions,id'],
-            'education_id' => ['nullable', 'exists:educations,id'],
             'job_title_id' => ['nullable', 'exists:job_titles,id'],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ];
@@ -79,7 +77,6 @@ class UserForm extends Form
             : null;
         $this->birth_place = $user->birth_place;
         $this->division_id = $user->division_id;
-        $this->education_id = $user->education_id;
         $this->job_title_id = $user->job_title_id;
         return $this;
     }

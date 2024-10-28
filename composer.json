@@ -24,6 +24,7 @@
         "fakerphp/faker": "^1.23"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "*",
         "laravel-lang/common": "^6.3",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",

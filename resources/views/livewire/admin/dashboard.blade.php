@@ -40,9 +40,7 @@
           <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
             {{ __('Name') }}
           </th>
-          <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
-            {{ __('NIP') }}
-          </th>
+         
           <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300">
             {{ __('Division') }}
           </th>
@@ -116,9 +114,7 @@
             <td class="{{ $class }} text-nowrap group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
               {{ $employee->name }}
             </td>
-            <td class="{{ $class }} group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
-              {{ $employee->nip }}
-            </td>
+           
             <td class="{{ $class }} text-nowrap group-hover:bg-gray-100 dark:group-hover:bg-gray-700">
               {{ $employee->division?->name ?? '-' }}
             </td>

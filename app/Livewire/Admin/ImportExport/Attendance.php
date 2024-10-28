@@ -29,7 +29,7 @@ class Attendance extends Component
     public $month = null;
     public $division = null;
     public $job_title = null;
-    public $education = null;
+    
 
     protected $rules = [
         'file' => 'required|mimes:csv,xls,xlsx,ods',
@@ -37,7 +37,7 @@ class Attendance extends Component
         'month' => 'nullable|date_format:Y-m',
         'division' => 'nullable|exists:divisions,id',
         'job_title' => 'nullable|exists:job_titles,id',
-        'education' => 'nullable|exists:educations,id',
+        
     ];
 
     public function preview()
@@ -69,7 +69,6 @@ class Attendance extends Component
                 year: $this->year,
                 division: $this->division,
                 jobTitle: $this->job_title,
-                education: $this->education
             )->get();
         } else {
             $this->previewing = false;
@@ -105,7 +104,6 @@ class Attendance extends Component
 
         $division = $this->division ? Division::find($this->division)?->name : null;
         $job_title = $this->job_title ? JobTitle::find($this->job_title)?->name : null;
-        $education = $this->education ? Education::find($this->education)?->name : null;
 
         $filename = 'attendances' . ($this->month ? '_' . Carbon::parse($this->month)->format('F-Y') : '') . ($this->year && !$this->month ? '_' . $this->year : '') . ($division ? '_' . Str::slug($division) : '') . ($job_title ? '_' . Str::slug($job_title) : '') . ($education ? '_' . Str::slug($education) : '') . '.xlsx';
 
@@ -114,7 +112,6 @@ class Attendance extends Component
             $this->year,
             $this->division,
             $this->job_title,
-            $this->education
         ), $filename);
     }
 }

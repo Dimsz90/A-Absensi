@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('nip')->nullable();
+            
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
@@ -23,8 +23,7 @@ return new class extends Migration
             $table->string('address'); // alamat tempat tinggal
             $table->string('city'); // kota
 
-            // pendidikan terakhir
-            $table->foreignId('education_id')->nullable()->constrained('educations');
+           
             // divisi
             $table->foreignId('division_id')->nullable()->constrained('divisions');
             // jabatan

@@ -35,6 +35,9 @@ Route::middleware([
 
         Route::get('/attendance-history', [UserAttendanceController::class, 'history'])
             ->name('attendance-history');
+            Route::get('/attendance/photo', function () {
+                return view('attendances.photo');
+            })->name('attendance.photo');
     });
 
     // ADMIN AREA
@@ -100,6 +103,7 @@ Route::middleware([
             ->name('admin.users.export');
         Route::get('/attendances/export', [ImportExportController::class, 'exportAttendances'])
             ->name('admin.attendances.export');
+
     });
 });
 

@@ -20,3 +20,6 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+    if (env('APP_DEBUG')) {
+        $app->register(Barryvdh\Debugbar\LumenServiceProvider::class);
+       }
